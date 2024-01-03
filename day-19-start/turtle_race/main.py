@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 from random import randint
 
 colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"]
-all_turtles = {}
+turtles_dict = {}
 
 
 is_race_on = False
@@ -22,7 +22,7 @@ for i, color in enumerate(colors):
         turtle.goto(-230, 25*i)
     else:
         turtle.goto(-230, -25*(i+1))
-    all_turtles[color] = turtle
+    turtles_dict[color] = turtle
 
 if user_bet:
     is_race_on = True
@@ -30,8 +30,8 @@ if user_bet:
 # Dictionary method to store multiple instances
 
 # while is_race_on:
-#       for key in all_turtles:
-#         turtle = all_turtles[key]
+#       for key in turtles_dict:
+#         turtle = turtles_dict[key]
 #         if turtle.xcor() > 230:
 #             is_race_on = False
 #             winning_color = turtle.pencolor()
@@ -43,16 +43,16 @@ if user_bet:
 #         turtle.forward(rand_distance)
 
 while is_race_on:
-      for key, value in all_turtles.items():
-        if value.xcor() > 230:
+      for color, turtle in turtles_dict.items():
+        if turtle.xcor() > 230:
             is_race_on = False
-            winning_color = value.pencolor()
+            winning_color = turtle.pencolor()
             if winning_color == user_bet:
                 print(f"You've won! The {winning_color} turtle is the winnner!")
             else:
                 print(f"You've lost! The {winning_color} turtle is the winnner!")
         rand_distance = randint(0, 10)
-        value.forward(rand_distance)
+        turtle.forward(rand_distance)
 
 my_screen.exitonclick()
 
