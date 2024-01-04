@@ -6,8 +6,6 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-
-
 class Snake():
     def __init__(self):
         self.segments_list = []
@@ -34,7 +32,6 @@ class Snake():
             new_y = self.segments_list[i-1].ycor()
             self.segments_list[i].goto(new_x, new_y)
         self.head.forward(MOVING_DISTANCE)
-
     
     def left_key(self):
         if self.head.heading() != RIGHT:
