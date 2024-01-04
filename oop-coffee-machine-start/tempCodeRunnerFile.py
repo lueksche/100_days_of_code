@@ -70,7 +70,7 @@ def main():
     money_machine = MoneyMachine()
     menu = Menu()
 
-    while keep_running == True:
+    while keep_running:
         selection = input(f"“What would you like? {menu.get_items()}: ")
         if selection == "report":
             coffee_maker.report()
