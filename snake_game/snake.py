@@ -1,14 +1,24 @@
 from turtle import Turtle
 
+STARTING_POSITION = ((0,0),(-20,0),(-40,0))
+MOVING_DISTANCE = 20
 class Snake():
     def __init__(self):
         self.segments_list = []
-        
-        for i in range(0,3):
+        self.create_snake()
+        self.controls = {
+            "Left" : self.left_key,
+            "Right" : self.right_key,
+            "Up" : self.up_key,
+            "Down" : self.down_key,
+            }
+
+    def create_snake(self):
+        for position in STARTING_POSITION:
             snake_segment = Turtle(shape="square")
             snake_segment.color("white")
             snake_segment.penup()
-            snake_segment.goto(-20*i,0)
+            snake_segment.goto(position)
             self.segments_list.append(snake_segment)
 
     def move(self):
@@ -16,4 +26,17 @@ class Snake():
             new_x = self.segments_list[i-1].xcor() 
             new_y = self.segments_list[i-1].ycor()
             self.segments_list[i].goto(new_x, new_y)
-        self.segments_list[0].forward(20)
+        self.segments_list[0].forward(MOVING_DISTANCE)
+
+    
+    def left_key(self):
+        self.segments_list[0].setheading(180)
+
+    def right_key(self):
+        self.segments_list[0].setheading(0)
+
+    def up_key(self):
+        self.segments_list[0].setheading(90)
+
+    def down_key(self):
+        self.segments_list[0].setheading(270)
