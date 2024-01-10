@@ -1,14 +1,16 @@
 from turtle import Turtle
 from random import randint
 
+COLOR = "white"
+SHAPE = "square"
 class Food(Turtle):
     
     def __init__(self):
         super().__init__()
         
         self.penup()
-        self.color("blue")
-        self.shape("circle")
+        self.color(COLOR)
+        self.shape(SHAPE)
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.speed("fastest")
         self.refresh()
