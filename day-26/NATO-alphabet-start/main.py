@@ -29,9 +29,9 @@ with open("/Users/Lukas.Deibel/code_repository/100_days_of_code/day-26/NATO-alph
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
-user_input = input("Enter a word: ")
+user_input = input("Enter a word: ").upper()
 
 for letter in user_input:
-    applied_nato_alphabet = [nato_alphabet[letter.upper()] for letter in user_input]
+    applied_nato_alphabet = [nato_alphabet[letter] for letter in user_input]
 
 print(applied_nato_alphabet)
