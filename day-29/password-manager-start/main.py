@@ -1,10 +1,13 @@
+# %source /Users/Lukas.Deibel/code_repository/100_days_of_code/bin/activate
+
 from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
+import json
 
 EMAIL = "deibel_lukas@gmx.de"
-FILE = "day-29/password-manager-start/data.txt"
+FILE = "day-29/password-manager-start/data.json"
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -54,6 +57,12 @@ def save():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
+    new_data = {
+        website: {
+            "email" : email,
+            "password" : password,
+        },
+    }
 
     if entry_invalid(website, email, password):
         messagebox.showerror(title="Oops", message="Please don't leave any fields empty")
@@ -62,12 +71,41 @@ def save():
     else:
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered:\nEmail:{email}\nPassword:{password}\nIs it ok to save?")
         if is_ok:
-            with open(file=FILE, mode="a") as file:
-                file.write(f"{website} | {email} | {password}" + "\n")
+            try:
+                with open(file=FILE, mode="r") as file:
+                    # json.dump(new_data, file, indent=4)
+                    data = json.load(file)
 
-            wipe_entries()
-        else:
-            pass
+            except FileNotFoundError:
+                with open(file=FILE, mode="w") as file:
+                    json.dump(new_data, file, indent=4)
+
+            else:
+                data.update(new_data)
+                
+                with open(file=FILE, mode="w") as file:
+                    json.dump(new_data, file, indent=4)
+            finally:
+                wipe_entries()
+
+def search():
+    website = website_entry.get()
+    try:
+        with open(file=FILE, mode="r") as file:
+            # json.dump(new_data, file, indent=4)
+            data = json.load(file)
+            email = data[website]["email"]
+            password = data[website]["password"]
+
+    except FileNotFoundError:
+        messagebox.showerror(title=website, message=f"No File found")
+    
+    except KeyError:
+        messagebox.showerror(title=website, message=f"No entries for {website}")
+
+    else:
+        messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -88,9 +126,9 @@ password_label = Label(text="Password")
 password_label.grid(column=0, row=3)
 
 # Entry
-website_entry = Entry(width=35)
+website_entry = Entry(width=21)
 website_entry.focus()
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry.grid(column=1, row=1)
 email_entry = Entry(width=35)
 email_entry.insert(0,EMAIL)
 email_entry.grid(column=1, row=2, columnspan=2)
@@ -103,5 +141,9 @@ password_button.grid(column=2, row=3)
 # Add Button
 add_button = Button(text="Add", command=save, width=32)
 add_button.grid(column=1, row=4, columnspan=2)
+
+# Search Button
+search_button = Button(text="search", command=search, width=10)
+search_button.grid(column=2, row=1)
 
 window.mainloop()
