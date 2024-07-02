@@ -1,0 +1,45 @@
+Date: 2/7/2024
+Time: 12:25
+Phone Number: +4917624680132
+Message: Howdy! This message will be sent instantly!
+--------------------
+Date: 2/7/2024
+Time: 12:26
+Phone Number: +4917624680132
+Message: Howdy! This message will be sent instantly!
+--------------------
+Date: 2/7/2024
+Time: 12:31
+Phone Number: M;Y_PHONE_NUMBER
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
+Date: 2/7/2024
+Time: 12:31
+Phone Number: M;Y_PHONE_NUMBER
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
+Date: 2/7/2024
+Time: 12:34
+Phone Number: MY_PHONE_NUMBER
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
+Date: 2/7/2024
+Time: 12:34
+Phone Number: +4917624680132
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
+Date: 2/7/2024
+Time: 12:35
+Phone Number: +4917624680132
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
+Date: 2/7/2024
+Time: 12:35
+Phone Number: +4917624680132
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
+Date: 2/7/2024
+Time: 13:47
+Phone Number: +4917624680132
+Message: It's going to rain today. Remember to bring an umbrella!
+--------------------
