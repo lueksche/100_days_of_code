@@ -1,6 +1,8 @@
 day-19-start/turtle_race/tempCodeRunnerFile.py
-
 .databricks/.databricks.env
 .databricks/project.json
 .databricks/*
 day-46-spotify-time-machine/token.txt
+.venv
+.vscode
+bin
